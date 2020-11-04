@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Welcome to Nebula-Edu</title>
+</head>
+<body>
+    <!-- Header Area -->
+    <header id="#" class="header-bar">
+        <h1>Nebula-Edu.</h1>
+    </header>
+
+    <!-- Nav-Bar Area -->
+    <nav class="nav-wrapper">
+        
+    </nav>
+
+    {{!-- Main Body/Content Area --}}
+    <main>
+        {{{ body }}}
+    </main>
+
+    {{#if loggedIn}}
+        <script src="/javascript/logout.js"></script>
+    {{/if}}
+</body>
+</html>

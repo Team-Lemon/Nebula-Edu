@@ -1,0 +1,21 @@
+{
+  "name": "nebula-edu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Team-Lemon/Nebula-Edu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Team-Lemon/Nebula-Edu/issues"
+  },
+  "homepage": "https://github.com/Team-Lemon/Nebula-Edu#readme"
+}

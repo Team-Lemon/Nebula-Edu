@@ -20,7 +20,6 @@ const sess = {
     secret: 'Super Duper Secret',
     cookie: {},
     resave: false,
-    maxAge: 3600000,
     saveUninitialized: true,
     store: new SequelizeStore({
         db: sequelize,

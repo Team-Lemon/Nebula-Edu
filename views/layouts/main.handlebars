@@ -17,9 +17,20 @@
         <!-- Nav-Bar Area -->
         <nav class="nav-wrapper">
             <div class="nav-container">
-                <div class="nav-item">
-                    <p class="nav-text">Login Here!</p>
-                </div>
+                {{!-- Logout Area only displays if User is loggedIn --}}
+                {{#if loggedIn}}
+                <a href="/" id="logout">
+                    <div class="nav-item">
+                        <p class="nav-text">Logout Here</p>
+                    </div>
+                </a>
+                {{else}}
+                <a href="/login" id="login-btn">
+                    <div class="nav-item">
+                        <p class="nav-text">Login Here!</p>
+                    </div>
+                </a>
+                {{/if}}
                 <div class="nav-item">
                     <p class="nav-text">> HTML</p>
                 </div>
@@ -29,12 +40,6 @@
                 <div class="nav-item">
                     <p class="nav-text">> JavaScript</p>
                 </div>
-                {{!-- Logout Area only displays if User is loggedIn --}}
-                {{#if loggedIn}}
-                <div class="nav-item">
-                    <p class="nav-text">Logout Here</p>
-                </div>
-                {{/if}}
             </div>
         </nav>
 
@@ -43,9 +48,6 @@
             {{{ body }}}
         </main>
     </div>
-
-    {{!-- Script Area regardless of being logged in --}}
-    {{!-- <script></script> --}}
 
     {{!-- Script Area, but only when logged in --}}
     {{#if loggedIn}}

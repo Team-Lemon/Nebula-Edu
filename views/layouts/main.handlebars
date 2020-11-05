@@ -13,16 +13,32 @@
         <h1>Nebula-Edu.</h1>
     </header>
 
-    <!-- Nav-Bar Area -->
-    <nav class="nav-wrapper">
-        
-    </nav>
+    <div class="content-container">
+        <!-- Nav-Bar Area -->
+        <nav class="nav-wrapper">
+            <div class="nav-container">
+                <div class="nav-item">
+                    <p class="nav-text">> HTML</p>
+                </div>
+                <div class="nav-item">
+                    <p class="nav-text">> CSS</p>
+                </div>
+                <div class="nav-item">
+                    <p class="nav-text">> JavaScript</p>
+                </div>
+            </div>
+        </nav>
 
-    {{!-- Main Body/Content Area --}}
-    <main>
-        {{{ body }}}
-    </main>
+        {{!-- Main Body/Content Area --}}
+        <main>
+            {{{ body }}}
+        </main>
+    </div>
 
+    {{!-- Script Area regardless of being logged in --}}
+    {{!-- <script></script> --}}
+
+    {{!-- Script Area, but only when logged in --}}
     {{#if loggedIn}}
         <script src="/javascript/logout.js"></script>
     {{/if}}

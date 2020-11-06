@@ -2,28 +2,28 @@ const router = require("express").Router();
 // const { Post, User, Comment } = require("../../models");
 const sequelize = require("../../config/connection");
 const withAuth = require("../../utils/auth");
-const { Post } = require("../../models");
+const { Lesson } = require("../../models");
 
 // To GET all posts > api/posts
 router.get("/", (req, res) => {
     console.log("======================");
-    Post.findAll({
+    Lesson.findAll({
       attributes: ["id", "title", "content", "created_at"],
       order: [["created_at", "DESC"]],
-    //   include: [
-    //     {
-    //       model: User,
-    //       attributes: ["username"],
-    //     },
-    //     {
-    //       model: Comment,
-    //       attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
-    //       include: {
-    //         model: User,
-    //         attributes: ["username"],
-    //       },
-    //     },
-    //   ],
+      // include: [
+      //   {
+      //     model: User,
+      //     attributes: ["username"],
+      //   },
+      //   {
+      //     model: Comment,
+      //     attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+      //     include: {
+      //       model: User,
+      //       attributes: ["username"],
+      //     },
+      //   },
+      // ],
     })
       .then((dbPostData) => res.json(dbPostData.reverse()))
       .catch((err) => {
@@ -34,7 +34,7 @@ router.get("/", (req, res) => {
 
 // To GET a single post
 router.get("/:id", (req, res) => {
-    Post.findOne({
+  Lesson.findOne({
       where: {
         id: req.params.id,
       },
@@ -70,7 +70,7 @@ router.get("/:id", (req, res) => {
 // To POST (create a post) api/posts
 router.post("/", withAuth, (req, res) => {
     // To Create a post
-    Post.create({
+    Lesson.create({
       title: req.body.title,
       content: req.body.content,
       user_id: req.session.user_id,
@@ -84,7 +84,7 @@ router.post("/", withAuth, (req, res) => {
 
 // To PUT (update) post
 router.put("/:id", withAuth, (req, res) => {
-    Post.update(
+  Lesson.update(
       {
         title: req.body.title,
         content: req.body.content,
@@ -110,7 +110,7 @@ router.put("/:id", withAuth, (req, res) => {
 
 // To DELETE api/posts/id > @ id EX: '1'
 router.delete("/:id", withAuth, (req, res) => {
-    Post.findOne({
+  Lesson.findOne({
       where: {id: req.params.id},
       include: [Comment]
     })

@@ -26,7 +26,7 @@ Comment.init(
                 key: 'id'
             }
         },
-        post_id: {
+        lesson_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {

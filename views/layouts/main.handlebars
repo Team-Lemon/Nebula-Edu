@@ -19,7 +19,7 @@
             <div class="nav-container">
                 {{!-- Logout Area only displays if User is loggedIn --}}
                 {{#if loggedIn}}
-                <a href="/" id="logout">
+                <a href="/logout" id="logout">
                     <div class="nav-item">
                         <p class="nav-text">Logout Here</p>
                     </div>
@@ -40,6 +40,13 @@
                 <div class="nav-item">
                     <p class="nav-text">> JavaScript</p>
                 </div>
+                {{#if loggedIn}}
+                    <a href="/new-lesson" id="add-btn">
+                        <div class="nav-item">
+                            <p class="nav-text">Add Lesson!</p>
+                        </div>
+                    </a>
+                {{/if}}
             </div>
         </nav>
 

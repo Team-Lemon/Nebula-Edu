@@ -1,5 +1,5 @@
 const router = require("express").Router();
-// const { Post, User, Comment } = require("../../models");
+// const { Lesson, User, Comment } = require("../../models");
 const sequelize = require("../../config/connection");
 const withAuth = require("../../utils/auth");
 const { Lesson } = require("../../models");
@@ -8,8 +8,8 @@ const { Lesson } = require("../../models");
 router.get("/", (req, res) => {
     console.log("======================");
     Lesson.findAll({
-      attributes: ["id", "title", "content", "created_at"],
-      order: [["created_at", "DESC"]],
+      attributes: ["id", "title", "desc", "user_id"],
+      order: [["DESC"]],
       // include: [
       //   {
       //     model: User,
@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
       //   },
       //   {
       //     model: Comment,
-      //     attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+      //     attributes: ["id", "comment_text", "post_id", "user_id"],
       //     include: {
       //       model: User,
       //       attributes: ["username"],
@@ -38,7 +38,7 @@ router.get("/:id", (req, res) => {
       where: {
         id: req.params.id,
       },
-      attributes: ["id", "content", "title", "created_at"],
+      attributes: ["id", "title", "desc", "user_id"],
     //   include: [
     //     {
     //       model: User,
@@ -46,7 +46,7 @@ router.get("/:id", (req, res) => {
     //     },
     //     {
     //       model: Comment,
-    //       attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+    //       attributes: ["id", "comment_text", "post_id", "user_id"],
     //       include: {
     //         model: User,
     //         attributes: ["username"],
@@ -67,27 +67,27 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// To POST (create a post) api/posts
+// To POST (create a post) api/lessons
 router.post("/", withAuth, (req, res) => {
     // To Create a post
     Lesson.create({
       title: req.body.title,
-      content: req.body.content,
+      desc: req.body.desc,
       user_id: req.session.user_id,
     })
       .then((dbPostData) => res.json(dbPostData))
       .catch((err) => {
         console.log(err);
         res.status(500).json(err);
-      });
+    });
 });
 
-// To PUT (update) post
+// To PUT (update) lesson
 router.put("/:id", withAuth, (req, res) => {
   Lesson.update(
       {
         title: req.body.title,
-        content: req.body.content,
+        desc: req.body.desc,
       },
       {
         where: {

@@ -23,11 +23,11 @@ router.get("/:id", (req, res) => {
       include: [
          {
            model: Lesson,
-           attributes: ["id", "title", "content", "created_at"],
+           attributes: ["id", "title", "desc"],
          },
         // {
         //   model: Comment,
-        //   attributes: ["id", "comment_text", "created_at"],
+        //   attributes: ["id", "comment_text"],
         //   include: {
         //     model: Lesson,
         //     attributes: ["title"],

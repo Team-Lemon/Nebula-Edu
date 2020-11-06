@@ -23,4 +23,8 @@ router.get("/signup", (req, res) => {
     res.render("signup");
 });
 
+router.get("/new-lesson", (req, res) => {
+    res.render("add-lesson" , {loggedIn: req.session.loggedIn});
+});
+
 module.exports = router;

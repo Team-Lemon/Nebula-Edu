@@ -31,6 +31,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// use images
+app.use(express.static('images'));
+
 // To turn on routes
 app.use(routes);
 

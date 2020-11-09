@@ -9,36 +9,67 @@
 </head>
 <body>
     <!-- Header Area -->
-    <header id="#" class="header-bar">
-        <h1>Nebula-Edu.</h1>
+    <header id="#" class="header-bar flex-row justify-space-between align-center">
+        <div>
+            <h1 class="uppercase flex-column"><span>Nebula</span><span style="font-size: 80px;">Edu</span></h1>
+        </div>
+        <div>
+            <img class="ship-img" src="/images/ship-trail.png" alt="Rocket Ship Graphic" />
+        </div>
+        <div>
+            {{!-- Logout Area only displays if User is loggedIn --}}
+            {{#if loggedIn}}
+            <a href="/logout" id="logout">Logout</a>
+            {{else}}
+            <a href="/login" id="login-btn">Login</a>
+            {{/if}}
+        </div>
     </header>
 
     <div class="content-container">
         <!-- Nav-Bar Area -->
         <nav class="nav-wrapper">
             <div class="nav-container">
-                {{!-- Logout Area only displays if User is loggedIn --}}
+                <div class="nav-block">
+                    <p class="uppercase nav-header">Learn</p>
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="#">HTML</a></li>
+                        <li class="nav-item"><a href="#">CSS</a></li>
+                        <li class="nav-item"><a href="#">Javascript</a></li>
+                    </ul>
+                </div>
+                <div class="nav-block">
+                    <p class="uppercase nav-header">Inspiration</p>
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="#">Designs</a></li>
+                        <li class="nav-item"><a href="#">Websites</a></li>
+                        <li class="nav-item"><a href="#">Applications</a></li>
+                        <li class="nav-item"><a href="#">Games</a></li>
+                    </ul>
+                </div>
                 {{#if loggedIn}}
-                <a href="/logout" id="logout">
-                    <div class="nav-item">
-                        <p class="nav-text">Logout Here</p>
-                    </div>
-                </a>
-                {{else}}
-                <a href="/login" id="login-btn">
-                    <div class="nav-item">
-                        <p class="nav-text">Login Here!</p>
-                    </div>
-                </a>
+                <div class="nav-block">
+                    <p class="uppercase nav-header">Community</p>
+                    <ul class="nav-list">
+                        <li class="nav-item">Community Posts</li>
+                        <li class="nav-item">Your Posts</li>
+                    </ul>
+                </div>
+                <div class="nav-block">
+                    <p class="uppercase nav-header">Dashboard</p>
+                    <ul class="nav-list">
+                        <li class="nav-item">Your Articles</li>
+                    </ul>
+                </div>
                 {{/if}}
-                <div class="nav-item">
-                    <p class="nav-text">> HTML</p>
+                {{!-- <div class="nav-item">
+                    <p class="nav-text"> HTML</p>
                 </div>
                 <div class="nav-item">
-                    <p class="nav-text">> CSS</p>
+                    <p class="nav-text"> CSS</p>
                 </div>
                 <div class="nav-item">
-                    <p class="nav-text">> JavaScript</p>
+                    <p class="nav-text"> JavaScript</p>
                 </div>
                 {{#if loggedIn}}
                     <a href="/new-lesson" id="add-btn">
@@ -46,7 +77,7 @@
                             <p class="nav-text">Add Lesson!</p>
                         </div>
                     </a>
-                {{/if}}
+                {{/if}} --}}
             </div>
         </nav>
 

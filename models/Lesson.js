@@ -1,7 +1,29 @@
 const { Model, DataTypes, TEXT } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Lesson extends Model {};
+class Lesson extends Model {
+    static upvote(body, models) {
+        return models.Vote.create({
+          user_id: body.user_id,
+          lesson_id: body.lesson_id
+        }).then(() => {
+          return Lesson.findOne({
+            where: {
+              id: body.lesson_id
+            },
+            attributes: [
+              'id',
+              'title',
+              ,
+              [
+                sequelize.literal('(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)'),
+                'vote_count'
+              ]
+            ]
+          });
+        });
+    }
+};
 
 Lesson.init(
     {

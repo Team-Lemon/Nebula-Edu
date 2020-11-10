@@ -61,12 +61,12 @@ Lesson.hasMany(Comment, {
     foreignKey: 'lesson_id'
 });
 
-Topic.hasMany(Lesson, {
-    foreignKey: 'topic_id'
-});
+// Topic.hasMany(Lesson, {
+//     foreignKey: 'topic_id'
+// });
 
-Lesson.belongsTo(Topic, {
-    foreignKey: 'topic_id'
-});
+// Lesson.belongsTo(Topic, {
+//     foreignKey: 'topic_id'
+// });
 
-module.exports = { User, Topic, Lesson, Vote, Comment };
+module.exports = { User, Lesson, Vote, Comment };

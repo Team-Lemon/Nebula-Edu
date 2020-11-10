@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Lesson, Vote, Comment } = require("../../models");
 
 // To GET /api/users
 router.get("/", (req, res) => {
@@ -7,45 +7,6 @@ router.get("/", (req, res) => {
       attributes: { exclude: ["password"] },
     })
       .then((dbUserData) => res.json(dbUserData))
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
-
-// To GET /api/users/1
-router.get("/:id", (req, res) => {
-    User.findOne({
-      attributes: { exclude: ["password"] },
-      where: {
-        id: req.params.id,
-      },
-      include: [
-         {
-           model: Lesson,
-           attributes: ["id", "title", "desc"],
-         },
-        // {
-        //   model: Comment,
-        //   attributes: ["id", "comment_text"],
-        //   include: {
-        //     model: Lesson,
-        //     attributes: ["title"],
-        //   },
-        // },
-        // {
-        //   model: Lesson,
-        //   attributes: ["title"],
-        // },
-      ],
-    })
-      .then((dbUserData) => {
-        if (!dbUserData) {
-          res.status(404).json({ message: "No user found with this id" });
-          return;
-        }
-        res.json(dbUserData);
-      })
       .catch((err) => {
         console.log(err);
         res.status(500).json(err);
@@ -116,6 +77,48 @@ router.post("/logout", (req, res) => {
     } else {
       res.status(404).end();
     }
+});
+
+// To GET /api/users/1
+router.get("/:id", (req, res) => {
+  User.findOne({
+    attributes: { exclude: ["password"] },
+    where: {
+      id: req.params.id,
+    },
+    include: [
+      {
+        model: Lesson,
+        attributes: ['id', 'title', ]
+      },
+      // include the Comment model here:
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', ],
+        include: {
+          model: Lesson,
+          attributes: ['title']
+        }
+      },
+      {
+        model: Lesson,
+        attributes: ['title'],
+        through: Vote,
+        as: 'voted_lessons'
+          }
+        ]
+      })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "No user found with this id" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+  });
 });
 
 // To PUT /api/users/id > EX: :id = '1'

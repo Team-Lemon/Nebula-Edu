@@ -15,7 +15,7 @@ Comment.init(
             allowNull: false,
             validate: {
                 min: 1,
-                max: 160
+                max: 80
             }
         },
         user_id: {

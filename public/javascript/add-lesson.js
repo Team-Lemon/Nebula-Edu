@@ -4,6 +4,7 @@ async function newFormHandler(event) {
     // Constants grabbing text values from text-entry
     const title = document.querySelector('input[name="post-title"]').value;
     const desc = document.querySelector('input[name="desc"]').value;
+    // const topic = document.querySelector('inpui')
 
     const response = await fetch(`/api/lessons`, {
       method: "POST",

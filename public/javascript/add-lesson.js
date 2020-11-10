@@ -4,13 +4,16 @@ async function newFormHandler(event) {
     // Constants grabbing text values from text-entry
     const title = document.querySelector('input[name="post-title"]').value;
     const desc = document.querySelector('input[name="desc"]').value;
-    // const topic = document.querySelector('inpui')
+    // Constant for topic_id to be passed to post route
+    const topic_id = document.querySelector('input[name="topic_id"]:checked').value;
+
 
     const response = await fetch(`/api/lessons`, {
       method: "POST",
       body: JSON.stringify({
         title,
         desc,
+        topic_id
       }),
       headers: {
         "Content-Type": "application/json",

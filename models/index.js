@@ -4,6 +4,7 @@ const Lesson = require("./Lesson");
 const Vote = require('./Vote');
 const Comment = require("./Comment");
 
+// create relationships
 User.hasMany(Comment, {
     foreignKey: 'user_id'
 });
@@ -12,7 +13,6 @@ Comment.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-// create relationships
 User.hasMany(Lesson, {
     foreignKey: 'user_id'
 });
@@ -69,4 +69,4 @@ Lesson.belongsTo(Topic, {
     foreignKey: 'topic_id'
 });
 
-module.exports = { User, Lesson, Vote, Comment };
+module.exports = { User, Lesson, Vote, Comment, Topic };

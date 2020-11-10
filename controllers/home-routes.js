@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
       include: [
         {
           model: Comment,
-          attributes: ['id', 'comment_text', 'lesson_id', 'user_id'],
+          attributes: ['id', 'comment_text', 'lesson_id', 'user_id', 'created_at'],
           include: {
             model: User,
             attributes: ['username']
@@ -57,7 +57,7 @@ router.get("/new-lesson", (req, res) => {
 });
 
 // To get a single User post @ id
-router.get("/:id", (req, res) => {
+router.get("/lessons/:id", (req, res) => {
   Lesson.findOne({
     where: {
       id: req.params.id,
@@ -76,7 +76,7 @@ router.get("/:id", (req, res) => {
       // include the Comment model here:
       {
         model: Comment,
-        attributes: ["id", "comment_text", "lesson_id", "user_id"],
+        attributes: ["id", "comment_text", "lesson_id", "user_id", 'created_at'],
         include: {
           model: User,
           attributes: ["username"],
@@ -94,9 +94,17 @@ router.get("/:id", (req, res) => {
         res.status(404).json({ message: "No post found with this id" });
         return;
       }
-      res.json(dbPostData);
+
+      // serialize the data
+      const lesson = dbPostData.get({ plain: true });
+
+      // pass data to template
+      res.render('single-lesson', {
+        lesson,
+        loggedIn: req.session.loggedIn
+      });
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });

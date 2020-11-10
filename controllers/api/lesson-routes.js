@@ -10,7 +10,8 @@ router.get("/", (req, res) => {
       attributes: [
       "id", 
       "title", 
-      "desc", 
+      "desc",
+      'created_at',
       "user_id", 
         [
           sequelize.literal(
@@ -24,7 +25,7 @@ router.get("/", (req, res) => {
         // To include the Comment model
         {
           model: Comment,
-          attributes: ['id', 'comment_text', 'lesson_id', 'user_id', ],
+          attributes: ['id', 'comment_text', 'lesson_id', 'user_id', 'created_at'],
           include: {
             model: User,
             attributes: ['username']
@@ -51,10 +52,11 @@ router.get("/:id", (req, res) => {
         id: req.params.id,
       },
       attributes: [
-        "id", 
-        "title", 
-        "desc", 
-        "user_id",
+        'id', 
+        'title', 
+        'desc',
+        'created_at',
+        'user_id',
         [
           sequelize.literal(
             "(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)"
@@ -69,7 +71,7 @@ router.get("/:id", (req, res) => {
          },
          {
           model: Comment,
-          attributes: ["id", "comment_text", "lesson_id", "user_id"],
+          attributes: ["id", "comment_text", "lesson_id", "user_id", 'created_at'],
            include: {
              model: User,
              attributes: ["username"],
@@ -90,12 +92,13 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// To POST (create a post) api/lessons
+// To POST (create a lesson) api/lessons
 router.post("/", withAuth, (req, res) => {
-    // To Create a post
+    // To Create a lesson
     Lesson.create({
       title: req.body.title,
       desc: req.body.desc,
+      topic_id: req.body.topic_id,
       user_id: req.session.user_id,
     })
       .then((dbPostData) => res.json(dbPostData))

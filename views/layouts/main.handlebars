@@ -10,25 +10,25 @@
 <body>
     <!-- Header Area -->
     <header id="#" class="header-bar flex-row justify-space-between align-center">
-        <div>
-            <h1 class="uppercase flex-column"><span>Nebula</span><span style="font-size: 80px;">Edu</span></h1>
+        <div class="col-1 col-lg-1 col-xl-1">
+            <h1 class="uppercase flex-column"><span>Nebula</span><span style="font-size: calc(45px + .4vw);">Edu</span></h1>
         </div>
-        <div>
+        {{!-- <div class="col-6 col-sm-2 col-md-9 col-lg-8 col-xl-8">
             <img class="ship-img" src="/images/ship-trail.png" alt="Rocket Ship Graphic" />
-        </div>
-        <div>
+        </div> --}}
+        <div class="col-1 col-lg-1 col-xl-1">
             {{!-- Logout Area only displays if User is loggedIn --}}
             {{#if loggedIn}}
-            <a href="/logout" id="logout">Logout</a>
+            <a href="/logout" id="logout" class="test">Logout</a>
             {{else}}
-            <a href="/login" id="login-btn">Login</a>
+            <a href="/login" id="login-btn" class="test">Login</a>
             {{/if}}
         </div>
     </header>
 
     <div class="content-container">
         <!-- Nav-Bar Area -->
-        <nav class="nav-wrapper">
+        <nav class="nav-wrapper col-3">
             <div class="nav-container">
                 <div class="nav-block">
                     <p class="uppercase nav-header">Learn</p>
@@ -51,14 +51,14 @@
                 <div class="nav-block">
                     <p class="uppercase nav-header">Community</p>
                     <ul class="nav-list">
-                        <li class="nav-item">Community Posts</li>
-                        <li class="nav-item">Your Posts</li>
+                        <li class="nav-item"><a href="#">Community Posts</a></li>
+                        <li class="nav-item"><a href="#">Your Posts</a></li>
                     </ul>
                 </div>
                 <div class="nav-block">
                     <p class="uppercase nav-header">Dashboard</p>
                     <ul class="nav-list">
-                        <li class="nav-item">Your Articles</li>
+                        <li class="nav-item"><a href="#">Your Articles</a></li>
                     </ul>
                 </div>
                 {{/if}}

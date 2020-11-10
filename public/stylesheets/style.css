@@ -63,17 +63,29 @@ header a {
     top: 25px;
 }
 
+.btn {
+  color: var(--tertiary);
+  background-color: var(--dark-blue);
+  border-radius: 5px;
+  border-style: none;
+  padding: 5px 10px;
+  display: block;
+}
+
+.content-wrapper {
+    margin: auto 0;
+}
 .content-container {
     display: grid;
     grid-template-columns: 250px 1fr;
     grid-template-areas: "sidebar main";
+    width: 1200px;
 }
 
 /* Nav Bar Styling */
 .nav-wrapper{
     display: block;
     margin: 20px 0 20px 10px;
-
 }
 
 .nav-container {
@@ -119,11 +131,15 @@ header a {
     font-size: calc(20px + .4vw);
 }
 
+main {
+    margin: 20px;
+}
+
 /* Card Styling */
 .card {
-    margin: 0 0 20px 0;
-    border: 3px solid black;
-    border-radius: var(--border-radius);
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px solid var(--primary);
 }
 
 .card-header {

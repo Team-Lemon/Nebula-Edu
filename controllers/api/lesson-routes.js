@@ -1,5 +1,5 @@
 const router = require("express").Router();
- const { Lesson, User, Comment, Vote } = require("../../models");
+const { Lesson, User, Comment, Vote } = require("../../models");
 const sequelize = require("../../config/connection");
 const withAuth = require("../../utils/auth");
 
@@ -53,7 +53,6 @@ router.get("/:id", (req, res) => {
         'id', 
         'title', 
         'desc',
-        'created_at',
         'user_id',
         [
           sequelize.literal(

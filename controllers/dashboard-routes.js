@@ -13,7 +13,6 @@ router.get('/', withAuth, (req, res) => {
         'id',
         'title',
         'desc',
-        'created_at'
         [sequelize.literal
             ("(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)")
         , 'vote_count']
@@ -44,7 +43,7 @@ router.get('/', withAuth, (req, res) => {
       });
 });
 
-router.get('/edit-lessons/:id', withAuth, (req, res) => {
+router.get('/edit-lesson/:id', withAuth, (req, res) => {
     Lesson.findOne({
         where: {
           id: req.params.id,

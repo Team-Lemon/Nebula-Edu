@@ -1,0 +1,18 @@
+<div class="card">
+    <h3 class="card-header">Edit Your Lesson</h3>
+    <form class="card-body edit-post-form">
+        <label for="lesson-title" class="form-label">Title</label>
+        <input name="lesson-title" type="text" value="{{lessons.title}}" class="form-input" />
+
+        <label class="form-label" for="desc">Description</label>
+        <input name="desc" type="text" value="{{lessons.desc}}" class="form-input" />
+
+        <button type="submit" class="btn">Update</button>
+        <button type="button" class="delete-post-btn btn">Delete Lesson</button>
+    </form>
+</div>
+
+{{> comments lessons.comments}}
+
+<script src="/javascript/edit-lesson.js"></script>
+<script src="/javascript/delete-lesson.js"></script>

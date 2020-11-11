@@ -2,12 +2,41 @@ const sequelize = require("../config/connection");
 const router = require("express").Router();
 const { Lesson, User, Comment } = require("../models");
 
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
     console.log(req.session);
-    // To render HomePage template and send data to it to be displayed/used
-
-    //  Awaiting db PostID for multiple pages (HTML, CSS, and JS)
-    res.render('homepage', {loggedIn: req.session.loggedIn});
+    Lesson.findAll({
+      attributes: [
+        'id',
+        'title',
+        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)'), 'vote_count']
+      ],
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'lesson_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
+        {
+          model: User,
+          attributes: ['username']
+        }
+      ]
+    })
+      .then(dbPostData => {
+        // pass post object into the homepage template
+        const lessons = dbPostData.map(lessons => lessons.get({ plain: true }));
+        res.render('homepage', { 
+        lessons,
+        loggedIn: req.session.loggedIn
+    });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 router.get("/login", (req, res) => {
@@ -25,6 +54,60 @@ router.get("/signup", (req, res) => {
 
 router.get("/new-lesson", (req, res) => {
     res.render("add-lesson" , {loggedIn: req.session.loggedIn});
+});
+
+// To get a single User post @ id
+router.get("/lessons/:id", (req, res) => {
+  Lesson.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: [
+      "id",
+      "title",
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)"
+        ),
+        "vote_count",
+      ],
+    ],
+    include: [
+      // include the Comment model here:
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "lesson_id", "user_id", 'created_at'],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      //include the User model here so it can attach the username to the comment
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
+  })
+    .then((dbPostData) => {
+      if (!dbPostData) {
+        res.status(404).json({ message: "No post found with this id" });
+        return;
+      }
+
+      // serialize the data
+      const lesson = dbPostData.get({ plain: true });
+
+      // pass data to template
+      res.render('single-lesson', {
+        lesson,
+        loggedIn: req.session.loggedIn
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;

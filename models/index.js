@@ -69,4 +69,4 @@ Lesson.belongsTo(Topic, {
     foreignKey: 'topic_id'
 });
 
-module.exports = { User, Topic, Lesson, Vote, Comment };
+module.exports = { User, Lesson, Vote, Comment, Topic };

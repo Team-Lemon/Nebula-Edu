@@ -1,0 +1,13 @@
+{{#if lessons.length}}
+<section>
+    <h2>Your Posts</h2>
+    {{#each lessons as |lessons|}}
+        {{> lesson-info lessons}}
+    {{/each}}
+</section>
+{{/if}}
+
+{{!-- Commented out for now until posts can be created  --}}
+{{!-- <button type="submit" class="btn"><a class="link" href="/dashboard/add-lesson">+ New Lesson</a></button>
+ 
+<script src="/javascript/add-lesson.js"></script> --}}

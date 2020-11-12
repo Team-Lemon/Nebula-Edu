@@ -69,4 +69,4 @@ Lesson.hasMany(Comment, {
 //     foreignKey: 'topic_id'
 // });
 
-module.exports = { User, Lesson, Vote, Comment, Topic };
+module.exports = { User, Lesson, Vote, Comment };

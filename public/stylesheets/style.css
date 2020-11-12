@@ -1,7 +1,7 @@
 :root {
-    --primary: #B2B2B2;
-    --secondary: #43004F;
-    --tertiary: #00FFDA;
+    --grey: #B2B2B2;
+    --purple: #43004F;
+    --light-blue: #00FFDA;
     --dark-blue: #000B2D;
     --light-purple: #FDB0FF;
 }
@@ -69,13 +69,19 @@ header a:hover{
   text-decoration: none;
 }
 
-.btn {
-  color: var(--tertiary);
+.button {
+  color: var(--light-blue);
   background-color: var(--dark-blue);
   border-radius: 5px;
   border-style: none;
   padding: 5px 10px;
   display: block;
+  width: 150px;
+}
+
+.button:hover {
+  color: var(--light-purple);
+  background-color: var(-);
 }
 
 .content-container {
@@ -122,10 +128,11 @@ header a:hover{
 }
 
 .nav-item a:hover{
-    color: var(--tertiary);
+    color: var(--light-blue);
     background-color: var(--dark-blue);
     border-radius: 5px;
     display: block;
+    text-decoration: none;
 }
 .nav-text {
     font-size: calc(20px + .4vw);
@@ -133,24 +140,27 @@ header a:hover{
 
 main {
     margin: 20px;
+    padding: 20px;
 }
 
 /* Card Styling */
-.card {
-    margin: 15px 0;
-    padding: 10px;
-    border: 1px solid var(--primary);
+.img {
+  margin: 0;
+  padding: 0;
+  width: 100px;
+  background-image: url(../images/nebula.jpg);
 }
 
-.card-header {
-    padding: 15px;
-    border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
+.img img{
+  align-self: center;
 }
 
-.card-body {
-    padding: 15px;
+p.card-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-
 /* Flex Content Styles */
 .flex-row {
     display: flex;

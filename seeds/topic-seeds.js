@@ -12,6 +12,10 @@ const topicData = [
     {
         title: 'Javascript',
         desc: 'Ever wonder how websites did their amazing transitions, animations, and actions! Javascript is one language that can do all of this, and more!'
+    },
+    {
+        title: 'Community',
+        desc: 'This is used for the community'
     }
 ]
 

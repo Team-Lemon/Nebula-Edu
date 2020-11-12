@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Team-Lemon/Nebula-Edu#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^7.0.4",
     "dotenv": "^8.2.0",

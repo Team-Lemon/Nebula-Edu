@@ -1,18 +1,30 @@
-{{> lesson-info lessons }}
+<div class="flex-row justify-content-between">
+  <h2>{{lessons.title}}</h2>
+  <button class="upvote-btn btn"><i class="fas fa-star"></i> {{lessons.vote_count}}
+    {{format_plural "Star" lessons.vote_count}}</small></p></button>
+  </div>
+<p><small class="text-muted">by {{lessons.user.username}} on {{format_date}}</small></p>
+<p>{{lessons.desc}}</p>
+
+
+
+
 
 {{#if loggedIn}}
+<br>
+<hr>
 <form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
+  <div class="form-group">
+    <textarea placeholder="Add a comment..." name="comment-body" class="form-control" rows="3"></textarea>
   </div>
 
-  <div>
-    <button type="submit">Add a Comment!</button>
-    <button type="button" class="upvote-btn">Like it? Upvote!</button>
+  <div class="flex-row justify-content-end">
+    <button class="btn" type="submit">Comment</button>
   </div>
 </form>
 {{/if}}
 
+<h3>Comments</h3>
 {{> comments lessons.comments}}
 
 {{#if loggedIn}}

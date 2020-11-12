@@ -39,6 +39,12 @@ header {
 header div{
     height: 100%;
 }
+
+h2 {
+  color: blueviolet;
+  font-weight: bold;
+}
+
 .ship-img {
     position: absolute;
     width: 40%;
@@ -59,27 +65,25 @@ header h1{
 header a {
     text-decoration: none;
     color: white;
-    position: relative;
-    top: 25px;
     font-size: calc(15px + .4vw);
 }
 
-header a:hover{
+header a:hover, header a:focus{
   color: var(--light-purple);
   text-decoration: none;
+  outline: none;
 }
 
-.button {
+.btn {
   color: var(--light-blue);
   background-color: var(--dark-blue);
   border-radius: 5px;
   border-style: none;
-  padding: 5px 10px;
+  padding: 5px 25px;
   display: block;
-  width: 150px;
 }
 
-.button:hover {
+.btn:hover, .btn:focus, .btn:active {
   color: var(--light-purple);
   background-color: var(-);
 }
@@ -127,13 +131,15 @@ header a:hover{
     padding-left: 10px;
 }
 
-.nav-item a:hover{
+.nav-item a:hover, .nav-item a:focus{
     color: var(--light-blue);
     background-color: var(--dark-blue);
     border-radius: 5px;
     display: block;
     text-decoration: none;
+    outline: none;
 }
+
 .nav-text {
     font-size: calc(20px + .4vw);
 }
@@ -144,23 +150,56 @@ main {
 }
 
 /* Card Styling */
-.img {
+.card-img {
   margin: 0;
   padding: 0;
   width: 100px;
-  background-image: url(../images/nebula.jpg);
+  background-image: url(../images/nebula-small.jpg);
 }
 
-.img img{
-  align-self: center;
+.card-img img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 
+.card-title a {
+  color: blueviolet;
+  font-weight: bold;
+}
+
+.card-title a, .card-text a{
+  margin-bottom: 0;
+
+}
+.card-title a:hover, .card-text a:hover{
+  text-decoration: none;
+  color: darkblue;
+}
 p.card-text {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.upvote-btn{
+  color: grey;
+  border: none;
+  background: none;
+  font: inherit;
+  padding: 5px;
+  cursor: pointer;
+  outline: inherit;
+  height: 40px;
+}
+
+.upvote-btn:hover, .upvote-btn:active, .upvote-btn:focus{
+  color: orange;
+  border: none;
+}
+
 /* Flex Content Styles */
 .flex-row {
     display: flex;

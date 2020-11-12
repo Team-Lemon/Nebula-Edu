@@ -114,14 +114,14 @@ header a:hover, header a:focus{
     margin: 0 10px 0 0;
 }
 
-.nav-list {
+.nav-list, .nav-sub-list{
     list-style-type: none;
     font-size: calc(12px + .4vw);
     line-height: 30px;
     margin: 10px 10px 0 0;
 }
 
-.nav-item {
+.nav-item, .nav-sub-item {
     cursor: pointer;
 }
 
@@ -138,6 +138,26 @@ header a:hover, header a:focus{
     display: block;
     text-decoration: none;
     outline: none;
+}
+
+.nav-sub-item {
+  font-size: calc(10px + .4vw);
+  padding-left: 10px;
+}
+
+.nav-sub-item a{
+  color: var(--dark-blue);
+  text-decoration: none;
+  padding-left: 15px;
+}
+
+.nav-sub-item a:hover{
+  color: blue;
+  background-color: lightgray;
+  border-radius: 5px;
+  display: block;
+  text-decoration: none;
+  outline: none;
 }
 
 .nav-text {

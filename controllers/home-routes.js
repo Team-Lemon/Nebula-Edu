@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
     Lesson.findAll({
       attributes: [
         'id',
+        'desc',
         'title',
         'desc',
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)'), 'vote_count']
@@ -64,8 +65,9 @@ router.get("/lessons/:id", (req, res) => {
       id: req.params.id,
     },
     attributes: [
-      "id",
-      "title",
+      'id',
+      'desc',
+      'title',
       [
         sequelize.literal(
           "(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)"
@@ -77,16 +79,16 @@ router.get("/lessons/:id", (req, res) => {
       // include the Comment model here:
       {
         model: Comment,
-        attributes: ["id", "comment_text", "lesson_id", "user_id", 'created_at'],
+        attributes: ['id', 'comment_text', 'lesson_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ['username'],
         },
       },
       //include the User model here so it can attach the username to the comment
       {
         model: User,
-        attributes: ["username"],
+        attributes: ['username'],
       },
     ],
   })
@@ -97,11 +99,11 @@ router.get("/lessons/:id", (req, res) => {
       }
 
       // serialize the data
-      const lesson = dbPostData.get({ plain: true });
+      const lessons = dbPostData.get({ plain: true });
 
       // pass data to template
       res.render('single-lesson', {
-        lesson,
+        lessons,
         loggedIn: req.session.loggedIn
       });
     })

@@ -1,5 +1,5 @@
 const router = require("express").Router();
- const { Lesson, User, Comment, Vote } = require("../../models");
+const { Lesson, User, Comment, Vote } = require("../../models");
 const sequelize = require("../../config/connection");
 const withAuth = require("../../utils/auth");
 
@@ -8,11 +8,10 @@ router.get("/", (req, res) => {
     console.log("======================");
     Lesson.findAll({
       attributes: [
-      "id", 
-      "title", 
+      "id",
+      "title",
       "desc",
-      'created_at',
-      "user_id", 
+      "user_id",
         [
           sequelize.literal(
             "(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)"
@@ -20,7 +19,6 @@ router.get("/", (req, res) => {
       "vote_count",
     ],
   ],
-    order: [["DESC"]],
       include: [
         // To include the Comment model
         {
@@ -55,7 +53,6 @@ router.get("/:id", (req, res) => {
         'id', 
         'title', 
         'desc',
-        'created_at',
         'user_id',
         [
           sequelize.literal(
@@ -94,7 +91,7 @@ router.get("/:id", (req, res) => {
 
 // To POST (create a lesson) api/lessons
 router.post("/", withAuth, (req, res) => {
-    // To Create a lesson
+    // To create a lesson
     Lesson.create({
       title: req.body.title,
       desc: req.body.desc,
@@ -110,7 +107,7 @@ router.post("/", withAuth, (req, res) => {
 
 // PUT /api/posts/upvote
 router.put('/upvote', withAuth, (req, res) => {
-  // custom static method created in models/Post.js
+  // custom static method created in models/Lesson.js
   if (req.session) {
     // pass session id along with all destructured properties on req.body
     Lesson.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })

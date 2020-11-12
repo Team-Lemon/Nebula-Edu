@@ -1,4 +1,4 @@
-{{> lesson-info lesson }}
+{{> lesson-info lessons }}
 
 {{#if loggedIn}}
 <form class="comment-form">
@@ -8,12 +8,12 @@
 
   <div>
     <button type="submit">Add a Comment!</button>
-    <button type="button" class="upvote-btn">Like this? Upvote!</button>
+    <button type="button" class="upvote-btn">Like it? Upvote!</button>
   </div>
 </form>
 {{/if}}
 
-{{> comments lesson.comments}}
+{{> comments lessons.comments}}
 
 {{#if loggedIn}}
     <script src="/javascript/comment.js"></script>

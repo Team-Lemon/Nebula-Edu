@@ -15,7 +15,6 @@ class Lesson extends Model {
                     'id',
                     'title',
                     'desc',
-                    'created_at',
                     [
                         sequelize.literal('(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)'),
                         'vote_count'
@@ -38,7 +37,7 @@ Lesson.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                min: 1, 
+                min: 1,
                 max: 160
             }
         },
@@ -47,7 +46,7 @@ Lesson.init(
             allowNull: false,
             validate: {
                 min: 1,
-                max: 2000
+                max: 200
             }
         },
         user_id: {

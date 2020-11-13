@@ -10,11 +10,8 @@ router.get('/', (req, res) => {
         'id',
         'desc',
         'title',
-<<<<<<< HEAD
         'desc',
-=======
         'createdAt',
->>>>>>> 0fa0fea4b2783e0513653a4456d1a08a01d2497c
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)'), 'vote_count']
       ],
       include: [
@@ -68,17 +65,131 @@ router.get("/new-lesson", (req, res) => {
 
 // To Display HTML Lessons on HTML Dedicated Page
 router.get("/html-lessons", (req, res) => {
-  res.render("html", {loggedIn: req.session.loggedIn});
+  Lesson.findAll({
+    where: {
+      topic_id: 1,
+    },
+    attributes: [
+      'id',
+      'desc',
+      'title',
+      'desc',
+      'createdAt',
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)'), 'vote_count']
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'lesson_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbPostData => {
+      // pass post object into the homepage template
+      const lessons = dbPostData.map(lessons => lessons.get({ plain: true }));
+      res.render('homepage', { 
+      lessons,
+      loggedIn: req.session.loggedIn
+  });
+  })
+  .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+  });
 });
 
 // To Display CSS Lessons on CSS Dedicated Page
 router.get("/css-lessons", (req, res) => {
-  res.render("css", {loggedIn: req.session.loggedIn});
+  Lesson.findAll({
+    where: {
+      topic_id: 2,
+    },
+    attributes: [
+      'id',
+      'desc',
+      'title',
+      'desc',
+      'createdAt',
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)'), 'vote_count']
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'lesson_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbPostData => {
+      // pass post object into the homepage template
+      const lessons = dbPostData.map(lessons => lessons.get({ plain: true }));
+      res.render('homepage', { 
+      lessons,
+      loggedIn: req.session.loggedIn
+  });
+  })
+  .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+  });
 });
 
 // To Display JS Lessons on JS Dedicated Page
 router.get("/js-lessons", (req, res) => {
-  res.render("js", {loggedIn: req.session.loggedIn});
+  Lesson.findAll({
+    where: {
+      topic_id: 3,
+    },
+    attributes: [
+      'id',
+      'desc',
+      'title',
+      'desc',
+      'createdAt',
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)'), 'vote_count']
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'lesson_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbPostData => {
+      // pass post object into the homepage template
+      const lessons = dbPostData.map(lessons => lessons.get({ plain: true }));
+      res.render('homepage', { 
+      lessons,
+      loggedIn: req.session.loggedIn
+  });
+  })
+  .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+  });
 });
 
 // To get a single User post @ id

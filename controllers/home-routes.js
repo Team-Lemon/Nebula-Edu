@@ -57,10 +57,10 @@ router.get("/signup", (req, res) => {
     res.render("signup");
 });
 
-// Add a lesson Area Render
-router.get("/how-to-contribute", (req, res) => {
-    res.render("contribute" , {loggedIn: req.session.loggedIn});
-});
+// // Add a lesson Area Render
+// router.get("/how-to-contribute", (req, res) => {
+//     res.render("contribute" , {loggedIn: req.session.loggedIn});
+// });
 
 // To Display HTML Lessons on HTML Dedicated Page
 router.get("/html-lessons", (req, res) => {
@@ -70,7 +70,6 @@ router.get("/html-lessons", (req, res) => {
     },
     attributes: [
       'id',
-      'desc',
       'title',
       'desc',
       'createdAt',
@@ -94,7 +93,7 @@ router.get("/html-lessons", (req, res) => {
     .then(dbPostData => {
       // pass post object into the homepage template
       const lessons = dbPostData.map(lessons => lessons.get({ plain: true }));
-      res.render('homepage', { 
+      res.render('homepage', {
       lessons,
       loggedIn: req.session.loggedIn
   });
@@ -113,7 +112,6 @@ router.get("/css-lessons", (req, res) => {
     },
     attributes: [
       'id',
-      'desc',
       'title',
       'desc',
       'createdAt',
@@ -137,7 +135,7 @@ router.get("/css-lessons", (req, res) => {
     .then(dbPostData => {
       // pass post object into the homepage template
       const lessons = dbPostData.map(lessons => lessons.get({ plain: true }));
-      res.render('homepage', { 
+      res.render('homepage', {
       lessons,
       loggedIn: req.session.loggedIn
   });
@@ -156,7 +154,6 @@ router.get("/js-lessons", (req, res) => {
     },
     attributes: [
       'id',
-      'desc',
       'title',
       'desc',
       'createdAt',

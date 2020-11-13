@@ -1,5 +1,5 @@
 const User = require("./User");
-const Topic = require('./Topic');
+// const Topic = require('./Topic');
 const Lesson = require("./Lesson");
 const Vote = require('./Vote');
 const Comment = require("./Comment");

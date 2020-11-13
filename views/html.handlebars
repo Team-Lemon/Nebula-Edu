@@ -1,2 +1,7 @@
 <h1>Howdy!</h1>
-<p>This is the HTML Section</p>
+<p>This is the HTML Section where you can create a Lesson or ask/answer questions!</p>
+<p>Want to create an HTML Lesson? <a href="/login"> Log-In!</a> or <a href="/signup">Create an account!</a></p>
+
+{{#if loggedIn}}
+    {{> add-lesson }}
+{{/if}}

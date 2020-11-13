@@ -58,8 +58,8 @@ router.get("/signup", (req, res) => {
 });
 
 // Add a lesson Area Render
-router.get("/new-lesson", (req, res) => {
-    res.render("add-lesson" , {loggedIn: req.session.loggedIn});
+router.get("/how-to-contribute", (req, res) => {
+    res.render("contribute" , {loggedIn: req.session.loggedIn});
 });
 
 // To Display HTML Lessons on HTML Dedicated Page

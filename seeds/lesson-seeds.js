@@ -36,6 +36,18 @@ const lessonData = [
         desc: 'Javascript Basics gets you started on the basic forms of Javascript..',
         user_id: '3',
         topic_id: 3
+    }, 
+    {
+        title: 'Need Help!',
+        desc: 'Needing help with this',
+        user_id: '1',
+        topic_id: 4
+    },
+    {
+        title: 'Have a question on Javascript',
+        desc: 'How do I use a switch statement',
+        user_id: '2',
+        topic_id: 4
     }
 ]
 

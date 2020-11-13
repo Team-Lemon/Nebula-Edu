@@ -1,19 +1,33 @@
-{{> lesson-info lessons }}
+<div class="flex-row justify-content-between">
+  <h2>{{lessons.title}}</h2>
+  <button class="upvote-btn btn"><i class="fas fa-star"></i> {{lessons.vote_count}}
+    {{format_plural "Star" lessons.vote_count}}</small></p></button>
+  </div>
+<p><small class="text-muted">by {{lessons.user.username}} on {{format_date lessons.createdAt}}</small></p>
 <p>{{lessons.desc}}</p>
 
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="adbabineaux" data-slug-hash="dyXqLON" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="dyXqLON">
+  <span>See the Pen <a href="https://codepen.io/adbabineaux/pen/dyXqLON">
+  dyXqLON</a> by Amanda Babineaux (<a href="https://codepen.io/adbabineaux">@adbabineaux</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
 {{#if loggedIn}}
+<br>
+<hr>
 <form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
+  <div class="form-group">
+    <textarea placeholder="Add a comment..." name="comment-body" class="form-control" rows="3"></textarea>
   </div>
 
-  <div>
-    <button type="submit">Add a Comment!</button>
-    <button type="button" class="upvote-btn">Like it? Upvote!</button>
+  <div class="flex-row justify-content-end">
+    <button class="btn" type="submit">Comment</button>
   </div>
 </form>
 {{/if}}
 
+<h3>Comments</h3>
 {{> comments lessons.comments}}
 
 {{#if loggedIn}}

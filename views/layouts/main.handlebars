@@ -1,62 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <title>Welcome to Nebula-Edu</title>
 </head>
+
 <body>
     <!-- Header Area -->
     <header id="#" class="header-bar">
-        <a href="/"><h1>Nebula-Edu.</h1></a>
+        <div class="container flex-row justify-space-between align-center">
+            <div class="col-1 col-lg-1 col-xl-1">
+                <a href="/">
+                    <h1 class="uppercase flex-column"><span>Nebula</span><span style="font-size: 50px;">Edu</span></h1>
+                </a>
+            </div>
+            <div>
+                <img class="ship-img" src="/images/ship-trail.png" alt="Rocket Ship Graphic" />
+            </div>
+            <div class="col-1 col-lg-1 col-xl-1" style="position: relative; top: 25px;">
+                {{!-- Logout Area only displays if User is loggedIn --}}
+                {{#if loggedIn}}
+                <a href="/logout" id="logout" class="test">Logout</a>
+                {{else}}
+                <a href="/login" id="login-btn" class="test">Login</a>
+                {{/if}}
+            </div>
+        </div>
     </header>
 
-    <div class="content-container">
+
+    <div class="content-container container">
         <!-- Nav-Bar Area -->
         <nav class="nav-wrapper">
             <div class="nav-container">
-                {{!-- Logout Area only displays if User is loggedIn --}}
-                {{#if loggedIn}}
-                <a href="/logout" id="logout">
-                    <div class="nav-item">
-                        <p class="nav-text">Logout Here</p>
-                    </div>
-                </a>
-                {{else}}
-                <a href="/login" id="login-btn">
-                    <div class="nav-item">
-                        <p class="nav-text">Login Here!</p>
-                    </div>
-                </a>
-                {{/if}}
-                <a href="/html-lessons" id="nav-btn">
-                    <div class="nav-item">
-                        <p class="nav-text">HTML</p>
-                    </div>
-                </a>
-                <a href="css-lessons" id="nav-btn">
-                    <div class="nav-item">
-                        <p class="nav-text">CSS</p>
-                    </div>
-                </a>
-                <a href="js-lessons" id="nav-btn">
-                    <div class="nav-item">
-                        <p class="nav-text">JavaScript</p>
-                    </div>
-                </a>
-                {{#if loggedIn}}
-                    <a href="/how-to-contribute" id="add-btn">
-                        <div class="nav-item">
-                            <p class="nav-text">Contribute!</p>
+                <div class="nav-block accordian" id="Accordian">
+                    <p class="uppercase nav-header">Learn</p>
+                    <ul class="nav-list">
+                        <li class="nav-item" id="html"><a href="#" data-toggle="collapse" data-target="#lesson-html"
+                                aria-controls="html">HTML</a></li>
+                        <div id="lesson-html" class="collapse show" aria-labelledby="html" data-parent="#Accordian">
+                            <ul class='nav-sub-list'>
+                                <li class="nav-sub-item"><a href="#">HTML 1</a></li>
+                                <li class="nav-sub-item"><a href="#">HTML 2</a></li>
+                                <li class="nav-sub-item"><a href="#">HTML 3</a></li>
+                            </ul>
                         </div>
-                    </a>
-                    <a href="/dashboard" id="add-btn">
-                        <div class="nav-item">
-                            <p class="nav-text">Your DashBoard</p>
+                        <li class="nav-item" id="css"><a href="#" data-toggle="collapse" data-target="#lesson-css"
+                                aria-controls="css">CSS</a></li>
+                        <div id="lesson-css" class="collapse" aria-labelledby="css" data-parent="#Accordian">
+                            <ul class='nav-sub-list'>
+                                <li class="nav-sub-item"><a href="#">CSS 1</a></li>
+                                <li class="nav-sub-item"><a href="#">CSS 2</a></li>
+                                <li class="nav-sub-item"><a href="#">CSS 3</a></li>
+                            </ul>
                         </div>
-                    </a>
+                        <li class="nav-item" id="js"><a href="#" data-toggle="collapse" data-target="#lesson-js"
+                                aria-controls="js">Javascript</a></li>
+                        <div id="lesson-js" class="collapse" aria-labelledby="js" data-parent="#Accordian">
+                            <ul class='nav-sub-list'>
+                                <li class="nav-sub-item"><a href="#">JS 1</a></li>
+                                <li class="nav-sub-item"><a href="#">JS 2</a></li>
+                                <li class="nav-sub-item"><a href="#">JS 3</a></li>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+                <div class="nav-block">
+                    <p class="uppercase nav-header">Inspiration</p>
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="#">Designs</a></li>
+                        <li class="nav-item"><a href="#">Websites</a></li>
+                        <li class="nav-item"><a href="#">Applications</a></li>
+                        <li class="nav-item"><a href="#">Games</a></li>
+                    </ul>
+                </div>
+                </a>
+                {{#if loggedIn}}
+                <div class="nav-block">
+                    <p class="uppercase nav-header">Community</p>
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="#">Community Posts</a></li>
+                        <li class="nav-item"><a href="#">Your Posts</a></li>
+                    </ul>
+                </div>
+                <div class="nav-block">
+                    <p class="uppercase nav-header">Dashboard</p>
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="#">Your Articles</a></li>
+                    </ul>
+                </div>
                 {{/if}}
             </div>
         </nav>
@@ -67,9 +107,17 @@
         </main>
     </div>
 
+
     {{!-- Script Area, but only when logged in --}}
     {{#if loggedIn}}
-        <script src="/javascript/logout.js"></script>
+    <script src="/javascript/logout.js"></script>
     {{/if}}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

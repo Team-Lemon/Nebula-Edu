@@ -1,13 +1,18 @@
-<h1>Login</h1>
-<form id="login-form" class="card-body">
-    <label class="form-label" for="username-login">Username</label>
-    <input id="username-login" type="text" autofocus="true" class="form-input" />
+<h2 class="uppercase">Login</h2>
+<form id="login-form">
+    <div class="form-group">
+        <label class="form-label" for="username-login">Username</label><br>
+        <input id="username-login" type="text" autofocus="true" class="form-input form-control" />
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="password-login">Password</label><br>
+        <input id="password-login" type="password" class="form-input form-control" />
+    </div>
+    <div class="d-flex align-items-end flex-column justify-content-end mb-3">
+        <button type="submit" class="btn bd-highlight">Login</button>
+        <a href="/signup" class="login-link btn-link"><small>Sign up instead</small></a>
+    </div>
 
-    <label class="form-label" for="password-login">Password</label>
-    <input id="password-login" type="password" autofocus="true" class="form-input" />
-
-    <button type="submit" class="btn">Login</button>
-    <a class="login-link" href="/signup">Sign up instead</a>
 </form>
 
 {{!-- Script Area --}}

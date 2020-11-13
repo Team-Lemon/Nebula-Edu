@@ -1,3 +1,7 @@
 {{#each lessons as |lessons|}}
 {{> lesson-info lessons }}
 {{/each}}
+
+{{#if loggedIn}}
+    {{> add-lesson }}
+{{/if}}

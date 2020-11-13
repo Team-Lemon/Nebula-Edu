@@ -6,7 +6,7 @@
         <div class="col-md-10">
             <div class="card-body">
                 <h5 class="card-title flex-row justify-content-between"><a href="/lessons/{{id}}">{{title}}</a><p class="card-text"><small class="text-muted votes"><i class="fas fa-star"></i> {{vote_count}} {{format_plural "Star" vote_count}}</small></p></h5>
-                <p class="card-subtitle"><small class="text-muted">by {{user.username}} on {{ format_date }}</small></p>
+                <p class="card-subtitle"><small class="text-muted">by {{user.username}} on {{ format_date createdAt }}</small></p>
                 <p class="card-text">{{desc}}</p>
                 <p class="card-text"><small class="text-muted"><a href="/lessons/{{id}}">{{comments.length}} {{format_plural "Comment" comments.length}}</a></small></p>
             </div>

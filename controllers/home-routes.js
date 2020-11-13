@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
         'id',
         'desc',
         'title',
-        'desc',
         'createdAt',
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)'), 'vote_count']
       ],
@@ -59,8 +58,8 @@ router.get("/signup", (req, res) => {
 });
 
 // Add a lesson Area Render
-router.get("/new-lesson", (req, res) => {
-    res.render("add-lesson" , {loggedIn: req.session.loggedIn});
+router.get("/how-to-contribute", (req, res) => {
+    res.render("contribute" , {loggedIn: req.session.loggedIn});
 });
 
 // To Display HTML Lessons on HTML Dedicated Page

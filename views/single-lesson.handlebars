@@ -3,7 +3,7 @@
   <button class="upvote-btn btn"><i class="fas fa-star"></i> {{lessons.vote_count}}
     {{format_plural "Star" lessons.vote_count}}</small></p></button>
   </div>
-<p><small class="text-muted">by {{lessons.user.username}} on {{format_date}}</small></p>
+<p><small class="text-muted">by {{lessons.user.username}} on {{format_date lessons.createdAt}}</small></p>
 <p>{{lessons.desc}}</p>
 
 <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="adbabineaux" data-slug-hash="dyXqLON" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="dyXqLON">

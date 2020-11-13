@@ -15,6 +15,7 @@ class Lesson extends Model {
                     'id',
                     'title',
                     'desc',
+                    'createdAt',
                     [
                         sequelize.literal('(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)'),
                         'vote_count'

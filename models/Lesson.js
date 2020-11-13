@@ -57,14 +57,15 @@ Lesson.init(
                 key: 'id'
             }
         },
-        topic_id: {
-            type: DataTypes.STRING,
-            allowNull: false,
+         topic_id: {
+             type: DataTypes.STRING,
+             defaultValue: '',
+             allowNull: false,
             references: {
-                model: 'topic',
-                key: 'id'
-            }
-        }
+                 model: 'topic',
+                 key: 'id'
+             }
+         }
     },
     {
         sequelize,

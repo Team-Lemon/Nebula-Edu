@@ -1,5 +1,5 @@
 const User = require("./User");
-const Topic = require('./Topic');
+// const Topic = require('./Topic');
 const Lesson = require("./Lesson");
 const Vote = require('./Vote');
 const Comment = require("./Comment");
@@ -69,4 +69,4 @@ Lesson.hasMany(Comment, {
 //     foreignKey: 'topic_id'
 // });
 
-module.exports = { User, Lesson, Vote, Comment, Topic };
+module.exports = { User, Lesson, Vote, Comment };

@@ -19,7 +19,7 @@ async function upvoteClickHandler(event) {
         document.location.reload();
       } else {
         alert(response.statusText);
-      }
+    }
 }
  
 document.querySelector('.upvote-btn').addEventListener('click', upvoteClickHandler);

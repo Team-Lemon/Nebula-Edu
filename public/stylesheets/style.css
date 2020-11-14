@@ -242,6 +242,38 @@ p.card-text {
   border: none;
 }
 
+/* Animations */
+@keyframes heart {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.1); }
+  40% { transform: scale(1); }
+  60% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.fa-heart {
+  animation: heart 3s infinite;
+}
+
+.list-inline-item {
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.list-inline-item:hover {
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transform: scale(1.225, 1.225);
+}
+
+.list-inline-item:active {
+  transform: scale(1.285, 1.285);
+}
+
+.footer-1 {
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}
+
 @media only screen and (max-width: 767px) {
   .rocket-ship {
     display: none;

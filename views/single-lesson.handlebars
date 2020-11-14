@@ -1,8 +1,10 @@
 <div class="flex-row justify-content-between">
   <h2>{{lessons.title}}</h2>
+  {{#if loggedIn}}
   <button class="upvote-btn"><i class="fas fa-star"></i> {{lessons.vote_count}}
     {{format_plural "Star" lessons.vote_count}}</small></p></button>
   </div>
+  {{/if}}
 <p><small class="text-muted">by {{lessons.user.username}} on {{format_date lessons.createdAt}}</small></p>
 <p>{{lessons.desc}}</p>
 

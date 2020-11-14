@@ -62,6 +62,16 @@ router.get("/design", (req, res) => {
   res.render("design" , {loggedIn: req.session.loggedIn});
 })
 
+// Render Website Page
+router.get("/application", (req, res) => {
+  res.render("application" , {loggedIn: req.session.loggedIn});
+})
+
+// Render Website Page
+router.get("/game", (req, res) => {
+  res.render("game" , {loggedIn: req.session.loggedIn});
+})
+
 // Add a lesson Area Render
 router.get("/add-post", (req, res) => {
   res.render("add-post" , {loggedIn: req.session.loggedIn});

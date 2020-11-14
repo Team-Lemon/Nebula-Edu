@@ -2,7 +2,7 @@ async function editFormHandler(event) {
     event.preventDefault();
 
     const title = document.querySelector('input[name="lesson-title"]').value.trim();
-    const desc = document.querySelector('input[name="desc"]').value.trim();
+    const desc = document.querySelector('textarea[name="desc"]').value.trim();
 
     const id = window.location.toString().split("/")[
       window.location.toString().split("/").length - 1

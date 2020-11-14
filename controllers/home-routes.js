@@ -57,10 +57,10 @@ router.get("/signup", (req, res) => {
     res.render("signup");
 });
 
-// // Add a lesson Area Render
-// router.get("/how-to-contribute", (req, res) => {
-//     res.render("contribute" , {loggedIn: req.session.loggedIn});
-// });
+// Render Design Page
+router.get("/design", (req, res) => {
+  res.render("design");
+})
 
 // Add a lesson Area Render
 router.get("/add-post", (req, res) => {

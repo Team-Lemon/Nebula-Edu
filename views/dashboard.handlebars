@@ -1,11 +1,11 @@
-{{#if lessons.length}}
 <h2>Your Posts</h2>
+{{#if lessons.length}}
 {{#each lessons as |lessons|}}
 <div class="card mb-3">
     <div class="row no-gutters">
         <div class="col-md-1 card-img flex-column align-items-end"></div>
         <div class="col-md-11">
-            <a href="/dashboard/edit-lesson/{{lesson.id}}"><div class="card-body">
+            <a href="/dashboard/edit-lesson/{{id}}"><div class="card-body">
                 <span class="card-text flex-row justify-content-between"><p class="card-text"><small class="text-muted"> {{user.username}} {{ format_date createdAt }}</small></p><p class="card-text"><small class="text-muted votes"><i class="fas fa-star animated bounceIn"></i> {{vote_count}} {{format_plural "Star" vote_count}}</small></p></span>
                 <h5 class="card-title flex-row justify-content-between">{{title}}<p class="card-text"><small class="text-muted votes"></small></p></h5>
                 <p class="card-text">{{desc}}</p>
@@ -14,6 +14,11 @@
         </div>
     </div>
 {{/each}}
+{{else}}
+
+<i class="far fa-sad-tear fa-10x text-muted my-3 mx-5"></i>
+<p>You don't have any posts right now.</p> 
+<p><small>Try adding a post in the <a href="/community">Community</a></small></p>
 {{/if}}
  
 <script src="/javascript/add-lesson.js"></script>

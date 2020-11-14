@@ -1,18 +1,18 @@
-<div class="card">
-    <h3 class="card-header">Edit Your Lesson</h3>
-    <form class="card-body edit-post-form">
+<h2 class="uppercase">Edit Post</h2>
+<form class="edit-post-form">
+    <div class="form-group">
         <label for="lesson-title" class="form-label">Title</label>
-        <input name="lesson-title" type="text" value="{{lessons.title}}" class="form-input" />
-
+        <input name="lesson-title" type="text" value="{{lessons.title}}" class="form-input form-control" />
+    </div>
+    <div class="form-group">
         <label class="form-label" for="desc">Description</label>
-        <input name="desc" type="text" value="{{lessons.desc}}" class="form-input" />
-
-        <button type="submit" class="btn">Update</button>
-        <button type="button" class="delete-post-btn btn">Delete Lesson</button>
+        <textarea name="desc" type="text" class="form-input form-control m2">{{lessons.desc}}</textarea>
+    </div>
+    <div class="form-group flex-row justify-content-end">
+        <button type="button" class="delete-post-btn btn btn-blue-grey">Delete Lesson</button>
+        <button type="submit" class="btn btn-deep-purple">Update</button>
+    </div>
     </form>
-</div>
-
-{{> comments lessons.comments}}
 
 <script src="/javascript/edit-lesson.js"></script>
 <script src="/javascript/delete-lesson.js"></script>

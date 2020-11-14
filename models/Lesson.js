@@ -50,10 +50,6 @@ Lesson.init(
                 max: 200
             }
         },
-        code: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -63,10 +59,9 @@ Lesson.init(
             }
         },
          topic_id: {
-             type: DataTypes.STRING,
-             defaultValue: '',
+             type: DataTypes.INTEGER,
              allowNull: false,
-            references: {
+             references: {
                  model: 'topic',
                  key: 'id'
              }

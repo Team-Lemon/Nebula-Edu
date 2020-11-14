@@ -1,0 +1,14 @@
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-1 card-img flex-column align-items-end">
+        </div>
+        <div class="col-md-10">
+            <a href="/lessons/{{id}}"><div class="card-body">
+                <span class="card-text flex-row justify-content-between"><p class="card-text"><small class="text-muted"> {{user.username}} {{ format_date createdAt }}</small></p><p class="card-text"><small class="text-muted votes"><i class="fas fa-star animated bounceIn infinite"></i> {{vote_count}} {{format_plural "Star" vote_count}}</small></p></span>
+                <h5 class="card-title flex-row justify-content-between">{{title}}<p class="card-text"><small class="text-muted votes"></small></p></h5>
+                <p class="card-text">{{desc}}</p>
+               <p class="card-text">{{comments.length}} {{format_plural "Comment" comments.length}}</p>
+            </div></a>
+        </div>
+    </div>    
+</div>

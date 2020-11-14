@@ -19,6 +19,9 @@ body {
     font-size: calc(16px + .4vw);
 }
 
+a {
+  color: blueviolet;
+}
 /* Font Styling & Sizing */
 .uppercase {
     text-transform: uppercase;

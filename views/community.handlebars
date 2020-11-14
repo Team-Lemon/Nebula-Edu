@@ -1,10 +1,6 @@
-<h1>Welcome to The Community!</h1>
+<h2>Welcome to The Community!</h2>
 <p>Ask Questions, Answer, and be Kind! Enjoy.</p>
 
 {{#each lessons as |lessons|}}
-    {{> lesson-info lessons }}
+    {{> community-info lessons }}
 {{/each}}
-
-{{#if loggedIn}}
-    {{> add-lesson}}
-{{/if}}

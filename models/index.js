@@ -1,5 +1,5 @@
 const User = require("./User");
-// const Topic = require('./Topic');
+const Topic = require('./Topic');
 const Lesson = require("./Lesson");
 const Vote = require('./Vote');
 const Comment = require("./Comment");
@@ -61,12 +61,12 @@ Lesson.hasMany(Comment, {
     foreignKey: 'lesson_id'
 });
 
-// Topic.hasMany(Lesson, {
-//     foreignKey: 'topic_id'
-// });
+Topic.hasMany(Lesson, {
+    foreignKey: 'topic_id'
+});
 
-// Lesson.belongsTo(Topic, {
-//     foreignKey: 'topic_id'
-// });
+Lesson.belongsTo(Topic, {
+    foreignKey: 'topic_id'
+});
 
-module.exports = { User, Lesson, Vote, Comment };
+module.exports = { User, Lesson, Vote, Comment, Topic };

@@ -63,49 +63,49 @@ router.get("/signup", (req, res) => {
 // });
 
 // To Display HTML Lessons on HTML Dedicated Page
-router.get("/html-lessons", (req, res) => {
+router.get('/html', (req, res) => {
   Lesson.findAll({
-    where: {
-      topic_id: 1,
-    },
-    attributes: [
-      'id',
-      'title',
-      'desc',
-      'createdAt',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)'), 'vote_count']
-    ],
-    include: [
-      {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'lesson_id', 'user_id', 'created_at'],
-        include: {
+      where: {
+        topic_id: 1,
+      },
+      attributes: [
+        'id',
+        'title',
+        'desc',
+        'createdAt',
+        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)'), 'vote_count']
+      ],
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'lesson_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
+        {
           model: User,
           attributes: ['username']
         }
-      },
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
-  })
-    .then(dbPostData => {
-      // pass post object into the homepage template
-      const lessons = dbPostData.map(lessons => lessons.get({ plain: true }));
-      res.render('homepage', {
-      lessons,
-      loggedIn: req.session.loggedIn
-  });
-  })
-  .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+      ]
+    })
+      .then(dbPostData => {
+        // pass post object into the homepage template
+        const lessons = dbPostData.map(lessons => lessons.get({ plain: true }));
+        res.render('html', {
+        lessons,
+        loggedIn: req.session.loggedIn
+    });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
   });
 });
 
 // To Display CSS Lessons on CSS Dedicated Page
-router.get("/css-lessons", (req, res) => {
+router.get("/css", (req, res) => {
   Lesson.findAll({
     where: {
       topic_id: 2,
@@ -135,7 +135,7 @@ router.get("/css-lessons", (req, res) => {
     .then(dbPostData => {
       // pass post object into the homepage template
       const lessons = dbPostData.map(lessons => lessons.get({ plain: true }));
-      res.render('homepage', {
+      res.render('css', {
       lessons,
       loggedIn: req.session.loggedIn
   });
@@ -147,7 +147,7 @@ router.get("/css-lessons", (req, res) => {
 });
 
 // To Display JS Lessons on JS Dedicated Page
-router.get("/js-lessons", (req, res) => {
+router.get("/js", (req, res) => {
   Lesson.findAll({
     where: {
       topic_id: 3,
@@ -177,7 +177,7 @@ router.get("/js-lessons", (req, res) => {
     .then(dbPostData => {
       // pass post object into the homepage template
       const lessons = dbPostData.map(lessons => lessons.get({ plain: true }));
-      res.render('homepage', { 
+      res.render('js', { 
       lessons,
       loggedIn: req.session.loggedIn
   });
@@ -185,6 +185,47 @@ router.get("/js-lessons", (req, res) => {
   .catch(err => {
       console.log(err);
       res.status(500).json(err);
+  });
+});
+
+router.get('/community', (req, res) => {
+  Lesson.findAll({
+      where: {
+        topic_id: 4,
+      },
+      attributes: [
+        'id',
+        'title',
+        'desc',
+        'createdAt',
+        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE lesson.id = vote.lesson_id)'), 'vote_count']
+      ],
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'lesson_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
+        {
+          model: User,
+          attributes: ['username']
+        }
+      ]
+    })
+      .then(dbPostData => {
+        // pass post object into the homepage template
+        const lessons = dbPostData.map(lessons => lessons.get({ plain: true }));
+        res.render('community', {
+        lessons,
+        loggedIn: req.session.loggedIn
+    });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
   });
 });
 
@@ -243,5 +284,6 @@ router.get("/lessons/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
+
 
 module.exports = router;

@@ -107,7 +107,7 @@ router.post("/", withAuth, (req, res) => {
     });
 });
 
-// PUT /api/posts/upvote
+// PUT /api/lessons/upvote
 router.put('/upvote', withAuth, (req, res) => {
   // custom static method created in models/Lesson.js
   if (req.session) {

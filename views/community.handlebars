@@ -1,23 +1,10 @@
-<h1>Create A Lesson!</h1>
-<form class="card-body new-post-form" id="new-post-form">
-    <label for="lesson-title" class="form-label">Title</label>
-    <input type="text" id="lesson-title" name="lesson-title" class="form-input" />
-    
-    <label class="form-label" for="desc">Description</label>
-    <input id="desc" name="desc" class="form-input" /><br>
+<h1>Welcome to The Community!</h1>
+<p>Ask Questions, Answer, and be Kind! Enjoy.</p>
 
-    {{!-- Filter section depending on which directory the user is in  --}}
-    <input type="radio" id="1" name="topic_id" value="html">
-    <label for="html">HTML</label><br>
+{{#each lessons as |lessons|}}
+    {{> lesson-info lessons }}
+{{/each}}
 
-    <input type="radio" id="2" name="topic_id" value="css">
-    <label for="css">CSS</label><br>
-
-    <input type="radio" id="3" name="topic_id" value="javascript">
-    <label for="javascript">JS</label><br>
-
-    <button type="submit" class="btn">Post It!</button>
-</form>
-
-{{!-- Script Area --}}
-<script src="/javascript/add-lesson.js"></script>
+{{#if loggedIn}}
+    {{> add-lesson}}
+{{/if}}

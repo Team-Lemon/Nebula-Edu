@@ -3,7 +3,7 @@ async function newFormHandler(event) {
 
     // Constants grabbing text values from text-entry
     const title = document.querySelector('input[name="lesson-title"]').value;
-    const desc = document.querySelector('input[name="desc"]').value;
+    const desc = document.querySelector('textarea[name="desc"]').value;
     // Constant for topic_id to be passed to post route
     let topic_id = 4;
 

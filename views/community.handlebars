@@ -1,6 +1,14 @@
-<h2>Welcome to The Community!</h2>
-<p>Ask Questions, Answer, and be Kind! Enjoy.</p>
+
+<div class="flex-row justify-content-between align-center">
+    <div>
+        <h2>Welcome to The Community!</h2>
+        <p>Ask Questions, Answer, and be Kind! Enjoy.</p>
+    </div>
+    <a href="/add-post" class="btn btn-deep-purple btn-round"><i class="fas fa-plus"></i> Add a Post</a>
+    </div>
+
 
 {{#each lessons as |lessons|}}
     {{> community-info lessons }}
 {{/each}}
+

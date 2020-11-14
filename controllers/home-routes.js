@@ -62,6 +62,11 @@ router.get("/signup", (req, res) => {
 //     res.render("contribute" , {loggedIn: req.session.loggedIn});
 // });
 
+// Add a lesson Area Render
+router.get("/add-post", (req, res) => {
+  res.render("add-post" , {loggedIn: req.session.loggedIn});
+});
+
 // To Display HTML Lessons on HTML Dedicated Page
 router.get('/html', (req, res) => {
   Lesson.findAll({
@@ -284,6 +289,5 @@ router.get("/lessons/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 module.exports = router;

@@ -93,6 +93,9 @@ button:focus{
   background-color: var(-);
 }
 
+.btn-round {
+  border-radius: 25px;
+}
 .content-container {
   display: grid;
   grid-template-columns: 250px 1fr;

@@ -59,7 +59,7 @@ router.get("/signup", (req, res) => {
 
 // Render Design Page
 router.get("/design", (req, res) => {
-  res.render("design");
+  res.render("design" , {loggedIn: req.session.loggedIn});
 })
 
 // Add a lesson Area Render

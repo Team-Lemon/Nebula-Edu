@@ -74,9 +74,11 @@ header a:hover, header a:focus{
   outline: none;
 }
 
+button:focus{
+  outline: none;
+  color: orange;
+}
 .btn {
-  color: var(--light-blue);
-  background-color: var(--dark-blue);
   border-radius: 5px;
   border-style: none;
   padding: 5px 25px;
@@ -424,7 +426,6 @@ p.card-text {
 
     /* col-md */
     @media screen and (min-width: 768px) {
-
         .col-md-1 {
           flex: 0 0 calc(100% * 1 / 12 - 2%);
         }

@@ -34,7 +34,7 @@ Lesson.init(
             allowNull: false
         },
         title: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
             validate: {
                 min: 1,
@@ -48,6 +48,10 @@ Lesson.init(
                 min: 1,
                 max: 200
             }
+        },
+        code: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
         user_id: {
             type: DataTypes.INTEGER,

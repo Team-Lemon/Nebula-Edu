@@ -44,7 +44,6 @@ router.get('/', withAuth, (req, res) => {
       });
 });
 
-
 router.get('/edit-lesson/:id', withAuth, (req, res) => {
     Lesson.findOne({
         where: {

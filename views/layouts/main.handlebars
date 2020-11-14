@@ -20,32 +20,37 @@
 <body>
     <!-- Header Area -->
     <header id="#" class="header-bar">
-        <div class="container flex-row justify-space-between align-center">
-            <div class="col-1 col-lg-1 col-xl-1">
-                <a href="/">
-                    <h1 class="uppercase flex-column"><span>Nebula</span><span style="font-size: 50px;">Edu</span></h1>
-                </a>
-            </div>
-            <div class="position-relative">
-                <img class="ship-img" src="/images/ship-trail.png" alt="Rocket Ship Graphic" />
-            </div>
-            <div class="col-1 col-lg-1 col-xl-1" style="position: relative; top: 25px;">
-                {{!-- Logout Area only displays if User is loggedIn --}}
-                {{#if loggedIn}}
-                <a href="/logout" id="logout" class="test">Logout</a>
-                {{else}}
-                <a href="/login" id="login-btn" class="test">Login</a>
-                {{/if}}
+        <div class=" container">
+            <div class="row">
+                <div class="col-12 col-sm-1 column">
+                    <a href="/">
+                        <h1 class="uppercase flex-column"><span>Nebula</span>
+                            <div class="w-100"></div>
+                            <span style="font-size: 50px;">Edu</span>
+                        </h1>
+                    </a>
+                </div>
+                <div class="col-12 col-sm-9 ship">
+                    <img class="ship-img" src="/images/ship-trail.png" alt="Rocket Ship Graphic" />
+                </div>
+                <div class="col-12 col-sm-1 login text-center">
+                    {{!-- Logout Area only displays if User is loggedIn --}}
+                    {{#if loggedIn}}
+                    <a href="/logout" id="logout" class="test">Logout</a>
+                    {{else}}
+                    <a href="/login" id="login-btn" class="test">Login</a>
+                    {{/if}}
+                </div>
             </div>
         </div>
     </header>
 
-
-    <div class="content-container container">
+<div class="container">
+    <div class="row">
         <!-- Nav-Bar Area -->
-        <nav class="nav-wrapper">
+        <nav class="nav-wrapper col-12 col-sm-12 col-md-3">
             <div class="nav-container">
-                <div class="nav-block accordian" id="Accordian">
+                <div class="nav-block">
                     <p class="uppercase nav-header">Learn</p>
                     <ul class="nav-list">
                         <li class="nav-item" id="html"><a href="/html">HTML</a></li>
@@ -63,7 +68,6 @@
                         <li class="nav-item"><a href="/design">Games</a></li>
                     </ul>
                 </div>
-                </a>
                 {{#if loggedIn}}
                 <div class="nav-block">
                     <p class="uppercase nav-header">Community</p>
@@ -72,22 +76,24 @@
                         <li class="nav-item"><a href="/dashboard">Your Posts</a></li>
                     </ul>
                 </div>
-                {{!-- <div class="nav-block">
-                    <p class="uppercase nav-header">Dashboard</p>
-                    <ul class="nav-list">
-                        <li class="nav-item"><a href="/dashboard">Your Articles</a></li>
-                    </ul>
-                </div> --}}
                 {{/if}}
             </div>
         </nav>
 
         {{!-- Main Body/Content Area --}}
-        <main>
+        <main class="container col-12 col-sm-12 col-md-8">
             {{{ body }}}
         </main>
-    </div>
 
+        {{!-- <footer>
+            <div class="container">
+                <div class="row">
+                    <p>Team Lemon</p>
+                </div>
+            </div>
+        </footer> --}}
+    </div>
+</div>
 
     {{!-- Script Area, but only when logged in --}}
     {{#if loggedIn}}

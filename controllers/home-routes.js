@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     console.log(req.session);
     Lesson.findAll({
       where: {
-         topic_id: [1, 2, 3]
+        topic_id: [1, 2, 3]
       },
       attributes: [
         'id',

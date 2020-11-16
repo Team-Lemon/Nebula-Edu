@@ -8,7 +8,7 @@ const hbs = exphbs.create({ helpers });
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3003;
 
 // To use Handlebars template engine
 app.engine('handlebars', hbs.engine);

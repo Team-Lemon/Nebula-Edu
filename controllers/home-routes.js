@@ -1,4 +1,5 @@
 const sequelize = require("../config/connection");
+const Op = sequelize.Op;
 const router = require("express").Router();
 const { Lesson, User, Comment } = require("../models");
 
@@ -6,6 +7,9 @@ const { Lesson, User, Comment } = require("../models");
 router.get('/', (req, res) => {
     console.log(req.session);
     Lesson.findAll({
+      where: {
+         topic_id: [1, 2, 3]
+      },
       attributes: [
         'id',
         'desc',

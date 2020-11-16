@@ -12,11 +12,21 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+html {
+  height: 100%;
+  position: relative;
+}
+
+html, body{
+  margin: 0;
+  padding: 0;
+}
 
 body {
     z-index: 9999;
     font-family: Arial, Helvetica, sans-serif;
     font-size: calc(15px + .4vw);
+    height: 100%;
 }
 
 a {
@@ -97,6 +107,7 @@ button:focus{
 .btn-round {
   border-radius: 25px;
 }
+
 .content-container {
   display: grid;
   grid-template-columns: 250px 1fr;
@@ -268,11 +279,26 @@ p.card-text {
   transform: scale(1.285, 1.285);
 }
 
-.footer-1 {
+.page-container {
   position: relative;
-  width: 100%;
-  bottom: 0;
+  min-height: 100vh;
 }
+
+.content-area {
+  padding-bottom: 2.5rem;
+}
+
+.footer-1 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+}
+
+footer a{
+  color: white;
+}
+
 
 /* The Modal (background)
 .modal {
@@ -364,6 +390,13 @@ p.card-text {
     text-align: center;
     background-color: darkorchid;
     color: white;
+  }
+
+  .footer-1 {
+    height: 125px;
+  }
+  .list-inline {
+    flex-direction: column;
   }
 }
 
